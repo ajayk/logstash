@@ -99,6 +99,8 @@ namespace "artifact" do
     @exclude_paths << 'vendor/**/gems/**/Gemfile.lock'
     @exclude_paths << 'vendor/**/gems/**/Gemfile'
 
+    @exclude_paths << 'vendor/jruby/lib/ruby/gems/shared/gems/rake-*'
+
     @exclude_paths
   end
 
