@@ -191,7 +191,7 @@ versionMap = (Map) (new Yaml()).load(new File("${versionsPath}").text)
 
 String jRubyURL
 String previousJRubyVersion = "9.3.9.0"
-String previousJRubyURL = "https://repo.maven.org/maven2/org/jruby/jruby-dist/${previousJRubyVersion}/jruby-dist-${previousJRubyVersion}-bin.tar.gz"
+String previousJRubyURL = "https://repo.maven.apache.org/maven2/org/jruby/jruby-dist/${previousJRubyVersion}/jruby-dist-${previousJRubyVersion}-bin.tar.gz"
 String jRubyVersion
 String jRubySha1
 Boolean doChecksum
@@ -203,7 +203,7 @@ if (versionMap["jruby-runtime-override"]) {
 } else {
     jRubyVersion = versionMap["jruby"]["version"]
     jRubySha1 = versionMap["jruby"]["sha1"]
-    jRubyURL = "https://repo.maven.org/maven2/org/jruby/jruby-dist/${jRubyVersion}/jruby-dist-${jRubyVersion}-bin.tar.gz"
+    jRubyURL = "https://repo.maven.apache.org/maven2/org/jruby/jruby-dist/${jRubyVersion}/jruby-dist-${jRubyVersion}-bin.tar.gz"
     doChecksum = true
 }
 def jrubyTarPath = "${projectDir}/vendor/_/jruby-dist-${jRubyVersion}-bin.tar.gz"
