@@ -191,7 +191,7 @@ versionMap = (Map) (new Yaml()).load(new File("${versionsPath}").text)
 
 String jRubyURL
 String previousJRubyVersion = "9.3.9.0"
-String previousJRubyURL = "https://repo1.maven.org/maven2/org/jruby/jruby-dist/${previousJRubyVersion}/jruby-dist-${previousJRubyVersion}-bin.tar.gz"
+String previousJRubyURL = "https://repo.maven.org/maven2/org/jruby/jruby-dist/${previousJRubyVersion}/jruby-dist-${previousJRubyVersion}-bin.tar.gz"
 String jRubyVersion
 String jRubySha1
 Boolean doChecksum
@@ -203,7 +203,7 @@ if (versionMap["jruby-runtime-override"]) {
 } else {
     jRubyVersion = versionMap["jruby"]["version"]
     jRubySha1 = versionMap["jruby"]["sha1"]
-    jRubyURL = "https://repo1.maven.org/maven2/org/jruby/jruby-dist/${jRubyVersion}/jruby-dist-${jRubyVersion}-bin.tar.gz"
+    jRubyURL = "https://repo.maven.org/maven2/org/jruby/jruby-dist/${jRubyVersion}/jruby-dist-${jRubyVersion}-bin.tar.gz"
     doChecksum = true
 }
 def jrubyTarPath = "${projectDir}/vendor/_/jruby-dist-${jRubyVersion}-bin.tar.gz"
@@ -290,15 +290,6 @@ tasks.register("downloadAndInstallPreviousJRubyFFI", Copy) {
     includeEmptyDirs = false
     into "${projectDir}/vendor/jruby/tmp"
     
-   // Retry block
-    retries {
-        maxRetries = 3 // Adjust the maximum number of retries as needed
-        delay = 1000 // Adjust the delay between retries (in milliseconds) as needed
-        onFailure { retryDetails ->
-            logger.error("Failed to download and install JRuby: ${retryDetails.failure}", retryDetails.exception)
-            logger.info("Retrying...")
-        }
-    }
 }
 
 
@@ -326,15 +317,6 @@ tasks.register("downloadAndInstallJRuby", Copy) {
         delete files("${projectDir}/vendor/jruby/tmp")
     }
     
-        // Retry block
-    retries {
-        maxRetries = 3 // Adjust the maximum number of retries as needed
-        delay = 1000 // Adjust the delay between retries (in milliseconds) as needed
-        onFailure { retryDetails ->
-            logger.error("Failed to download and install JRuby: ${retryDetails.failure}", retryDetails.exception)
-            logger.info("Retrying...")
-        }
-    }
 
 }
 
