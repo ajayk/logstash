@@ -203,7 +203,7 @@ if (versionMap["jruby-runtime-override"]) {
 } else {
     jRubyVersion = versionMap["jruby"]["version"]
     jRubySha1 = versionMap["jruby"]["sha1"]
-    jRubyURL = https://oss.sonatype.org/content/repositories/releases/org/jruby/jruby-dist/${jRubyVersion}/jruby-dist-${jRubyVersion}-bin.tar.gz"
+    jRubyURL = "https://oss.sonatype.org/content/repositories/releases/org/jruby/jruby-dist/${jRubyVersion}/jruby-dist-${jRubyVersion}-bin.tar.gz"
     doChecksum = true
 }
 def jrubyTarPath = "${projectDir}/vendor/_/jruby-dist-${jRubyVersion}-bin.tar.gz"
